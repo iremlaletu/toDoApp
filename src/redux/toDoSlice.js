@@ -2,6 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
   todos: [],
+  filter: "All",
 };
 
 const toDoSlice = createSlice({
@@ -31,10 +32,13 @@ const toDoSlice = createSlice({
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       );
     },
+    setFilter: (state, action) => {
+      state.filter = action.payload;
+    },
   },
 });
 
-export const { addToDo, removeToDo, updateToDo, toggleComplete } =
+export const { addToDo, removeToDo, updateToDo, toggleComplete, setFilter } =
   toDoSlice.actions;
 
 export default toDoSlice.reducer;
