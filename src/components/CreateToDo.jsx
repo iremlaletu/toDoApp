@@ -4,13 +4,15 @@ import { addToDo } from "../redux/toDoSlice";
 
 const CreateToDo = () => {
   const [input, setInput] = useState("");
+  const [selectedColor, setSelectedColor] = useState("gray");
 
   const dispatch = useDispatch();
 
   const addTodoHandler = (e) => {
     e.preventDefault();
-    dispatch(addToDo(input));
+    dispatch(addToDo({ text: input, priority: selectedColor }));
     setInput("");
+    setSelectedColor("gray");
   };
 
   return (
@@ -18,7 +20,7 @@ const CreateToDo = () => {
       <h1 className="text-xl mb-5 text-orange-950"> Create Your To Do's...</h1>
       <form
         onSubmit={addTodoHandler}
-        className="flex mb-4 gap-2 w-full max-w-3xl"
+        className="flex mb-4 gap-7 w-full max-w-4xl"
       >
         <input
           type="text"

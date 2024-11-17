@@ -12,8 +12,9 @@ const toDoSlice = createSlice({
     addToDo(state, action) {
       const todo = {
         id: nanoid(),
-        text: action.payload,
+        text: action.payload.text,
         completed: false,
+        priority: action.payload.priority,
       };
       state.todos.push(todo);
     },
@@ -35,10 +36,22 @@ const toDoSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+    updatePriority(state, action) {
+      const { id, priority } = action.payload;
+      state.todos = state.todos.map((todo) =>
+        todo.id === id ? { ...todo, priority } : todo
+      );
+    },
   },
 });
 
-export const { addToDo, removeToDo, updateToDo, toggleComplete, setFilter } =
-  toDoSlice.actions;
+export const {
+  addToDo,
+  removeToDo,
+  updateToDo,
+  toggleComplete,
+  setFilter,
+  updatePriority,
+} = toDoSlice.actions;
 
 export default toDoSlice.reducer;

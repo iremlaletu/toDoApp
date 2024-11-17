@@ -13,7 +13,7 @@ const Tabs = () => {
   const dispatch = useDispatch();
 
   return (
-    <ul className="flex justify-end gap-5 mb-5">
+    <ul className="flex justify-start gap-3 md:gap-11 mb-5">
       {tabs.map((tab, index) => (
         <li
           key={index}
