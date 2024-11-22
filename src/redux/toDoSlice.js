@@ -52,6 +52,10 @@ const toDoSlice = createSlice({
       );
       saveToLocalStorage(state.todos);
     },
+    reorderTodos(state, action) {
+      state.todos = action.payload;
+      saveToLocalStorage(state.todos);
+    },
   },
 });
 
@@ -62,6 +66,7 @@ export const {
   toggleComplete,
   setFilter,
   updatePriority,
+  reorderTodos,
 } = toDoSlice.actions;
 
 export default toDoSlice.reducer;

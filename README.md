@@ -7,6 +7,8 @@
 
 - Tasks are saved in **LocalStorage** to ensure persistence across page reloads.
 
+- You can drag tasks wherever you want.
+
 ##### Technologies
 
 - **React** (v18.3)

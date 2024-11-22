@@ -1,17 +1,19 @@
 export const loadFromLocalStorage = () => {
   try {
-    const serializedState = localStorage.getItem("todos");
-    return serializedState ? JSON.parse(serializedState) : [];
+    const data = localStorage.getItem("todos");
+    if (data) {
+      return JSON.parse(data);
+    }
+    return [];
   } catch (error) {
-    console.error("Error loading todos from LocalStorage:", error);
+    console.error("Failed to load todos from localStorage:", error);
     return [];
   }
 };
 
 export const saveToLocalStorage = (todos) => {
   try {
-    const serializedState = JSON.stringify(todos);
-    localStorage.setItem("todos", serializedState);
+    localStorage.setItem("todos", JSON.stringify(todos));
   } catch (error) {
     console.error("Error saving todos to LocalStorage:", error);
   }
